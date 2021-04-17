@@ -43,7 +43,6 @@ async function getBscBalance(bscAddress, myApiKey, parseOptions, calledTimes = 0
     return "Error: called too many times. " + calledTimes;
   }
 
-  Utilities.sleep(Math.random() * 100 + waitInMiliseconds)
   id_cache = 'BSC' + bscAddress + 'BNBbalance'
   var cache = CacheService.getScriptCache();
   var cached = cache.get(id_cache);
@@ -52,6 +51,7 @@ async function getBscBalance(bscAddress, myApiKey, parseOptions, calledTimes = 0
   }
 
   try {
+    Utilities.sleep(Math.random() * 100 + waitInMiliseconds)
     url = "https://api.bscscan.com/api?module=account&action=balance&address=" + bscAddress + "&tag=latest&apikey=" + myApiKey;
 
     var res = await UrlFetchApp.fetch(url)
@@ -84,7 +84,6 @@ async function getBscTokenBalance(bscAddress, tokenContract, myApiKey, parseOpti
     return "Error: called too many times. " + calledTimes;
   }
 
-  Utilities.sleep(Math.random() * 100 + waitInMiliseconds)
   id_cache = 'BSC' + bscAddress + tokenContract + 'balance'
   var cache = CacheService.getScriptCache();
   var cached = cache.get(id_cache);
@@ -93,6 +92,7 @@ async function getBscTokenBalance(bscAddress, tokenContract, myApiKey, parseOpti
   }
 
   try {
+    Utilities.sleep(Math.random() * 100 + waitInMiliseconds)
     url = "https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=" + tokenContract + "&address=" + bscAddress + "&tag=latest&apikey=" + myApiKey;
 
     var res = await UrlFetchApp.fetch(url)
